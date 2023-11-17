@@ -1,0 +1,42 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}{{p_id.p_name}} | {% endblock %}
+{% block content %}
+<div class="container-w">
+    <div class="grid-product">
+        <div class="product-item">
+            <div class="grid-image-item">
+                <div class="p-image-item" id="zoomed-img">
+                    
+                </div>
+                <div class="p-image-item">
+                    <img src="{% static 'app_jsy3b/' %}{{p_id.p_image}}.png" alt="" class="small-preview">
+                </div>
+                <div class="p-image-item">
+                    <img src="{% static 'app_jsy3b/' %}{{p_id.p_image}}-1.png" alt="" class="small-preview">
+                </div>
+                <div class="p-image-item">
+                    <img src="{% static 'app_jsy3b/' %}{{p_id.p_image}}-2.png" alt="" class="small-preview">
+                </div>
+                <div class="p-image-item">
+                    <img src="{% static 'app_jsy3b/' %}{{p_id.p_image}}-3.png" alt="" class="small-preview"> 
+                </div>
+            </div>        
+        </div>
+        <div class="product-item">
+            <div class="paper">
+                <h1 class="detail-name">{{p_id.p_name}}</h1>
+                {% if p_id.p_discount == True %}
+                    <h1 class="detail-price">{{p_id.p_special_price|floatformat:'g'}} Baht</h1>
+                    <h2><del class="detail-price red-font">{{p_id.p_price|floatformat:'g'}} Baht</del></h2>
+                {% else %}
+                    <h1 class="detail-price">{{p_id.p_price|floatformat:'g'}} Baht</h1>
+                {% endif %}
+                <p class="detail-descripe font-th">{{p_id.p_descripe}}</p>
+                <hr class="hori-line">
+                <a href="{% url 'AddToCart' p_id.id %}" class="add-cart">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}Home | {% endblock %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'report' %}" class="report-container">
+        <img src="{% static 'app_jsy3b/Report.jpg' %}" alt="" class="report-img">
+    </a>
+    <div class="grid-home">
+        <div class="home-item">
+            <h1 class="title">Air Jordan 1 Low x Travis Scott</h1>
+            <p class="subtitle">"Sail and Ridgerock" / "Reverse Mocha"</p>
+            <a href="{% url 'product' 4 %}" class="b1">Shop now !!</a>
+        </div>
+        <div class="home-item">
+            <img src="{% static 'app_jsy3b/Travis.png' %}" alt="" class="tv">
+            <img src="{% static 'app_jsy3b/s1.jpg' %}" alt="" class="veti-img">
+        </div>
+        <div class="home-item">
+            <img src="{% static 'app_jsy3b/aj.png' %}" alt="" class="aj">
+            <img src="{% static 'app_jsy3b/s2.jpg' %}" alt="" class="hori-img">
+        </div>
+    </div>
+    <div id="grid-banner">
+        <div class="banner-item">
+            <img src="{% static 'app_jsy3b/banner.jpg' %}" alt="">
+        </div>
+        <div class="banner-item">
+            <img src="{% static 'app_jsy3b/banner.jpg' %}" alt="">
+        </div>
+        <div class="banner-item">
+            <img src="{% static 'app_jsy3b/banner.jpg' %}" alt="">
+        </div>
+        <div class="banner-item">
+            <img src="{% static 'app_jsy3b/banner.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

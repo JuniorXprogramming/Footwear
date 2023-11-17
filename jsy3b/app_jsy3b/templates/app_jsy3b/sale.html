@@ -1,0 +1,26 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}Sale | {% endblock %}
+{% block content %}
+<div class="container-w-t">
+    <div class="flex-product">
+        {% if dc_detail %}
+        {% for product in dc_detail %}
+        <div class="card">
+            <h1 class="content-name">{{product.p_name}}</h1>
+            <h1 class="content-price">{{product.p_special_price|floatformat:'g'}} Baht <span class="sprice"><del
+                        class="sprice">{{product.p_price|floatformat:'g'}} Baht</del></span></h1>
+            <h2 class="content-endds font-th">โปรโมชั่นพิเศษหมดวันที่ {{product.p_end_discount}}</h2>
+            <div class="content-image">
+                <img src="{% static 'app_jsy3b/' %}{{product.p_image}}.png" alt="" width="300" height="300">
+            </div>
+            <a href="{% url 'product' product.id %}" class="content-link">View Product</a>
+        </div>
+        {% endfor %}
+        {% else %}
+            <h1>No Product Discount</h1>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

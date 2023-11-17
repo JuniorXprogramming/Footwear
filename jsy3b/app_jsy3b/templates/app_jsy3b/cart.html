@@ -1,0 +1,59 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}{{p_id.p_name}} | {% endblock %}
+{% block content %}
+
+<div class="container-w-t">
+    {% if cart_items %}
+    <div class="cart-container">
+        <h1 class="total-quanlity font-th">รถเข็นของฉัน ({{total_quanlity}})</h1>
+        {% for item in cart_items %}
+        <div class="cart-grid">
+            {% if item.product.p_discount == True %}
+                <div class="cart-item">
+                    <img src="{% static 'app_jsy3b/' %}{{item.product.p_image}}.png" alt="">
+                </div>
+                <div class="cart-item">
+                    <h1 class="cart-name">{{item.product.p_name}}</h1>
+                </div>
+                <div class="cart-item">
+                    <h1 class="cart-price">{{item.product.p_special_price|floatformat:'g'}} Baht</h1>
+                </div>
+                <div class="cart-item">
+                    <h1 class="quanlity">{{item.quanlity}}</h1>
+                    <a href="{% url 'Increment' item.product.id %}" class="increment">+</a>
+                    <a href="{% url 'Decrement' item.product.id %}" class="decrement">-</a>
+                </div>
+                <div class="cart-item">
+                    <a href="{% url 'removeCart' item.product.id %}" class="delete font-th">X</a>
+                </div>
+            {% else %}
+                <div class="cart-item">
+                    <img src="{% static 'app_jsy3b/' %}{{item.product.p_image}}.png" alt="">
+                </div>
+                <div class="cart-item">
+                    <h1 class="cart-name">{{item.product.p_name}}</h1>
+                </div>
+                <div class="cart-item">
+                    <h1 class="cart-price">{{item.product.p_price|floatformat:'g'}} Baht</h1>
+                </div>
+                <div class="cart-item">
+                    <h1 class="quanlity">{{item.quanlity}}</h1>
+                    <a href="{% url 'Increment' item.product.id %}" class="increment">+</a>
+                    <a href="{% url 'Decrement' item.product.id %}" class="decrement">-</a>
+                </div>
+                <div class="cart-item">
+                    <a href="{% url 'removeCart' item.product.id %}" class="delete font-th">X</a>
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        
+    </div>
+    {% else %}
+    <div class="paper">
+        <h1>No Product in Cart</h1>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

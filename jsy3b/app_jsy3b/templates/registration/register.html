@@ -1,0 +1,49 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}Register | {% endblock %}
+{% block content %}
+<div class="container-w-t flex-login">
+    <div class="grid-login">
+        <div class="item-login" id="register">
+            <img src="{% static 'app_jsy3b/logo2.png' %}" alt="" id="logo">
+            <form action="{% url 'register' %}" method="post" class="my-form">
+                {% csrf_token %}
+                <div class="form-field">
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                    {{form.username.errors}}
+                </div>
+                <div class="form-field">
+                    {{form.password1.label_tag}}
+                    {{form.password1}}
+                    {{form.password1.errors}}
+                </div>
+                <div class="form-field">
+                    {{form.password2.label_tag}}
+                    {{form.password2}}
+                    {{form.password2.errors}}
+                </div>
+                <div class="form-field">
+                    {{form.first_name.label_tag}}
+                    {{form.first_name}}
+                    {{form.first_name.errors}}
+                </div>
+                <div class="form-field">
+                    {{form.last_name.label_tag}}
+                    {{form.last_name}}
+                    {{form.last_name.errors}}
+                </div>
+                <div class="form-field">
+                    {{form.email.label_tag}}
+                    {{form.email}}
+                    {{form.email.errors}}
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </div>
+        <div class="item-login">
+            <img src="{% static 'app_jsy3b/pink.png' %}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}All Male | {% endblock %}
+{% block content %}
+<div class="container-w">
+    <div class="flex-product">
+    {% for detail in Foot %}
+        {% if detail.p_type == "male" or detail.p_type == "unisex" %}
+            {% if detail.p_discount == 0 %}
+            <div class="card">
+                <h1 class="content-name">{{detail.p_name}}</h1>
+                <h1 class="content-price">{{detail.p_price|floatformat:'g'}} Baht</h1>
+                <br>
+                <br>
+                <div class="content-image">
+                    <img src="{% static 'app_jsy3b/' %}{{detail.p_image}}.png" alt="" width="300" height="300">
+                </div>
+                <a href="{% url 'product' detail.id %}" class="content-link">View Product</a>
+            </div>
+            {% else %}
+            <div class="card">
+                <h1 class="content-name">{{detail.p_name}}</h1>
+                <h1 class="content-price">{{detail.p_special_price|floatformat:'g'}} Baht <span class="sprice"><del class="sprice">{{detail.p_price|floatformat:'g'}} Baht</del></span></h1>
+                <h2 class="content-endds font-th">โปรโมชั่นพิเศษหมดวันที่ {{detail.p_end_discount}}</h2>
+                <div class="content-image">
+                    <img src="{% static 'app_jsy3b/' %}{{detail.p_image}}.png" alt="" width="300" height="300">
+                </div>
+                <a href="{% url 'product' detail.id %}" class="content-link">View Product</a>
+            </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

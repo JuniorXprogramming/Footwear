@@ -1,0 +1,24 @@
+{% extends 'app_jsy3b/component/base.html' %}
+{% load static %}
+{% block site_title %}Login | {% endblock %}
+{% block content %}
+<div class="container-w-t flex-login">
+    <div class="grid-login">
+        <div class="item-login" id="login">
+            <img src="{% static 'app_jsy3b/logo2.png' %}" alt="" id="logo">
+            <form action="{% url 'login' %}" method="post" class="my-form">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="login-button">Login</button>
+                <hr class="hori-line-2">
+            </form>
+            <a href="{% url 'register' %}" class="register-btn">
+                <button class="login-button">Register</button>
+            </a>
+        </div>
+        <div class="item-login">
+            <img src="{% static 'app_jsy3b/Login.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}
