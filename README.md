@@ -16,3 +16,6 @@ HTML
 CSS
 JavaScript
 SQL
+# This is Version 1
+#### So me don't config resolution scale
+#### default Resolution scale 1920*1080
